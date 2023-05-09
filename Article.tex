@@ -4,6 +4,35 @@
 \usepackage{indentfirst}
 \usepackage{amsmath}
 \usepackage{tabularray}
+\usepackage{xcolor}
+\usepackage{listings}
+
+\lstset{
+    basicstyle          =   \sffamily,
+    keywordstyle        =   \bfseries,
+    commentstyle        =   \rmfamily\itshape,
+    stringstyle         =   \ttfamily,
+    flexiblecolumns,
+    numbers             =   left,
+    showspaces          =   false,
+    numberstyle         =   \zihao{-5}\ttfamily,
+    showstringspaces    =   false,
+    captionpos          =   t,
+    frame               =   lrtb,
+}
+
+\lstdefinestyle{Python}{
+    language        =   Python,
+    basicstyle      =   \zihao{-5}\ttfamily,
+    numberstyle     =   \zihao{-5}\ttfamily,
+    keywordstyle    =   \color{blue},
+    keywordstyle    =   [2] \color{teal},
+    stringstyle     =   \color{magenta},
+    commentstyle    =   \color{red}\ttfamily,
+    breaklines      =   true,
+    columns         =   fixed,
+    basewidth       =   0.5em,
+}
 
 \setlength{\parindent}{2em}
 \numberwithin{equation}{section}
@@ -68,7 +97,7 @@
             \begin{equation}
                 COP = \frac{Q_{heat}}{W},\hspace{2em} EER = \frac{Q_{cold}}{W}
             \end{equation}
-            $ Q_{heat} 和 Q_{cold} $指的是单位时间内的制热/制冷量，单位为\textit{W}，
+            $ Q_{heat} / Q_{cold} $指的是单位时间内的制热/制冷量，单位为\textit{W}，
             公式中\textit{W}指的是单位为时间内空调消耗的功率，单位为\textit{W}
 
             首先计算出建筑物各个月的能量需求量。设室内温度要维持的温度为 $ t_{in} $，室外温度为 $ t_{out} $,
@@ -92,17 +121,55 @@
             其中\textit{Q}表示传热量，\textit{k}为导热系数，\textit{A}为传热面积，
             $ \Delta T $是室内外温度差，即$ t_{in} - t_{out} $，\textit{L}表示材料厚度。
 
-            将建筑分成墙、门窗、房顶、地面四个部分，分别计算并累加即可得到需要制热/制冷的热量，设为$ Q_{heat} $，
-            由\textit{COP}和\textit{EER}的定义可得到需电量$ Q_{elec} $和热量$ Q_{heat} $的转化关系
+            将建筑分成墙、门窗、房顶、地面四个部分，分别计算并累加即可得到需要制热/制冷的热量，设为$ Q_{make} $，
+            由\textit{COP}和\textit{EER}的定义可得到需电量$ Q_{elec} $和热量$ Q_{make} $的转化关系
             \begin{equation}
                 Q_{elec} =
                 \begin{cases}
-                    \frac{Q_{heat}}{EER} & \text{ $ \Delta t < 0 $ } \\
+                    \frac{Q_{make}}{EER} & \text{ $ \Delta t < 0 $ } \\
                     0 & \text{ $ \Delta t = 0 $ } \\
-                    \frac{Q_{heat}}{COP} & \text{ $ \Delta t > 0 $ }
+                    \frac{Q_{make}}{COP} & \text{ $ \Delta t > 0 $ }
                 \end{cases}
             \end{equation}
 
             最后根据需电量与碳排放的换算关系 $ m = Q_{elec} \cdot 0.28 $ 求出每月碳排放后累加，即得到年度碳排放量。
+
+
+    {\centering{\section{模型假设}}}
+
+
+    {\centering{\section{符号说明}}}
+
+
+    {\centering{\section{模型的建立与求解}}}
+
+
+    {\centering{\section{结果检验与误差分析}}}
+
+
+    {\centering{\section{模型评价}}}
+
+
+    {\centering{\section{模型推广与改进}}}
+
+
+    {\centering{\section{参考文献}}}
+
+
+    {\centering{\section{附录}}}
+        \subsection*{附录A \hspace{2em} 问题一}
+            \lstinputlisting[
+                style       =   Python,
+                caption     =   {\bf testModel1.py},
+                label       =   {testModel1.py}
+            ]{testModel1.py}
+
+        \subsection*{附录B \hspace{2em} 问题二}
+
+        \subsection*{附录C \hspace{2em} 问题三}
+
+        \subsection*{附录D \hspace{2em} 问题四}
+
+        \subsection*{附录E \hspace{2em} 问题五}
 
 \end{document}
