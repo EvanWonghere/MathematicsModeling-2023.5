@@ -21,7 +21,7 @@ height = 3
 roof_thickness = 0.3
 roof_thermal = 0.2
 roof_square = length * width
-windowAndDoor_thickness = 0.3
+windowAndDoor_thickness = 0.1
 windowAndDoor_thermal = 1.6
 windowAndDoor_square = 5
 wall_thickness = 0.3
@@ -54,7 +54,7 @@ def get_day_qmake(dt):
         get_qmake(windowAndDoor_thermal, windowAndDoor_square, dt, windowAndDoor_thickness) + \
         get_qmake(roof_thermal, roof_square, dt, roof_thickness) + \
         get_qmake(ground_thermal, ground_square, dt, ground_thickness)
-    return day_qmake
+    return day_qmake * 86400
 
 
 def get_month_qmake(month):
@@ -71,7 +71,7 @@ def get_qelec(qmake, dt):
 
 
 def get_carbon_emission(qelec):
-    return qelec / 1000 * 0.28
+    return (qelec / 3600000) * 0.28
 
 
 carbonEmissions = []
