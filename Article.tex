@@ -3,6 +3,7 @@
 \usepackage[UTF-8]{ctex}
 \usepackage{indentfirst}
 \usepackage{amsmath}
+\usepackage{tabularray}
 
 \setlength{\parindent}{2em}
 \numberwithin{equation}{section}
@@ -16,7 +17,7 @@
 
     \centerline{\textbf{\LARGE{摘要}}}
 
-    \textbf{\Large{关键词}}
+    \textbf{\large{关键词}}
 
     {\centering{\section{问题重述}}}
         \subsection{问题背景}
@@ -25,20 +26,23 @@
         低碳建筑是指在建筑材料与设备制造、施工建造和建筑物使用的整个生命周期内，减少化石能源的使用，提高能效，降低二氧化碳排放量。
 
         \subsection{目标任务}
-            \textbf{问题一：}现在有一间长 $ 4 m $ 、宽 $ 3 m $ 、高 $ 3 m $ 的单层平顶单体建筑，墙体为砖混结构，厚 $ 30 cm $ ( 热导系数 $ 0.3 W / m^{2} \cdot K $ )，
-            屋顶钢筋混凝土浇筑，厚度 $ 30 cm $ ( 热导系数 $ 0.2 W / m^{2} \cdot K $ ) ，
-            门窗总面积 $ 5 m^{2} $ ( 热导系数 $ 1.6 W / m^{2} \cdot K $ )，
-            地面为混凝土 (热导系数 $ 0.25 W / m^{2} \cdot K $ )，
-            该建筑所处地理位置一年(按365天计算)的月平均温度(单位：$ ^{\circ} C $ )见下表 \\
+            \textbf{问题一：}现在有一间长 $ 4 m $ 、宽 $ 3 m $ 、高 $ 3 m $ 的单层平顶单体建筑，墙体为砖混结构，厚 $ 30 cm $ (热导系数 $ 0.3 W / m^{2} \cdot K $)，
+            屋顶钢筋混凝土浇筑，厚度 $ 30 cm $ (热导系数 $ 0.2 W / m^{2} \cdot K $)，
+            门窗总面积 $ 5 m^{2} $ (热导系数 $ 1.6 W / m^{2} \cdot K $)，
+            地面为混凝土 (热导系数 $ 0.25 W / m^{2} \cdot K $)，
+            该建筑所处地理位置一年 (按365天计算)的月平均温度 (单位：$ ^{\circ} C $)见下表 \\
             \begin{table}
                 \centering
-                \begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|c|c|} \hline
-                    月份 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\ \hline
-                    平均温度 & -1 & 2 & 6 & 12 & 22 & 28 & 31 & 32 & 26 & 23 & 15 & 2\\ \hline
+                \begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|c|c|}
+                    \hline
+                    月份 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\
+                    \hline
+                    平均温度 & -1 & 2 & 6 & 12 & 22 & 28 & 31 & 32 & 26 & 23 & 15 & 2\\
+                    \hline
                 \end{tabular}
             \end{table}
             \\ 假设该建筑物内温度需要一直保持在 $ 18 - 26 ^{\circ}C $ ，在温度不适宜的时候要通过电来调节温度，消耗 $ 1 kW \cdot h $ 电相当于 $ 0.28kg $ 碳排放。
-            请计算该建筑物通过空调(假设空调制热性能系数\textit{COP}为3.5，制冷性能系数\textit{EER}为2.7)调节温度的年碳排放量。
+            请计算该建筑物通过空调 (假设空调制热性能系数\textit{COP}为3.5，制冷性能系数\textit{EER}为2.7)调节温度的年碳排放量。
             (尽量使用本题所给条件计算碳排放，不考虑其他损耗)
 
             \textbf{问题二：}在居住建筑的整个生命周期 (建造、运行、拆除)中，影响碳排放的因素有很多，
