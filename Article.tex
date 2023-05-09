@@ -63,9 +63,15 @@
     {\centering{\section{问题分析}}}
         \subsection{问题一}
             问题一要求计算通过空题调节温度产生的年碳排放量。
-            我们需先求出空调制热和制冷分别消耗的电量，借此求出空调消耗的电量，最后转换成碳排放。
+            我们需先求出空调制热和制冷的热量，借此通过\textit{COP}和\textit{EER}求出空调消耗的电量，最后转换成碳排放。
+            其中\textit{COP}和\textit{EER}的定义分别为
+            \begin{equation}
+                COP = \frac{Q_{heat}}{W},\hspace{2em} EER = \frac{Q_{cold}}{W}
+            \end{equation}
+            $ Q_{heat} 和 Q_{cold} $指的是单位时间内的制热/制冷量，单位为\textit{W}，
+            公式中\textit{W}指的是单位为时间内空调消耗的功率，单位为\textit{W}
 
-            首先计算出建筑物各个月的能量需求量。设室内温度要维持的温度为 $ t_{in} $， 室外温度为 $ t_{out} $,
+            首先计算出建筑物各个月的能量需求量。设室内温度要维持的温度为 $ t_{in} $，室外温度为 $ t_{out} $,
             当月该地区平均温度为 $ t_{ave} $ ，方便起见，我们规定
             \begin{equation*}
                 t_{out} = t_{ave}
@@ -78,25 +84,15 @@
                     26 ^{\circ}C & \text{ $ t_{out} > 26 ^{\circ}C $}
                 \end{cases}
             \end{equation*}
-            我们使用单位面积热负荷计算每个月的能量需求量。单位面积热负荷可由以下公式计算
-            \begin{equation}
-                q = U \cdot A \cdot |\Delta t|
-            \end{equation}
-            其中，\textit{q}为单位面积热负荷，\textit{U}为总传热系数，\textit{A}为总传热面积， $ \Delta t = t_{in} - t_{out} $ 。\\
-            总传热系数\textit{U}可由以下公式计算
-            \begin{equation}
-                U = \frac{1}{R_{wall} + R_{roof} + R_{air}}
-            \end{equation}
-            其中 $ R_{wall} $, $ R_{roof} $, $ R_{air} $ 分别为墙体、屋顶、空气层的热阻。 \\
-            由于空气层的热阻很小，在此忽略不计。墙体和屋顶的热阻可以由以下公式计算
-            \begin{equation}
-                R = \frac{d}{\lambda}
-            \end{equation}
-            其中\textit{d}为墙体或房顶的厚度， $ \lambda $ 为其热传导率。
 
-            计算得到总传热系数\textit{U}后即可进一步计算得出建筑物每月单位时间的能量需求量 $ Q_{heat} = q \cdot c $，其中\textit{c}为该月份所含单位时间数目，
-            再根据 $ \Delta t $ 判断制热还是制冷，进而计算得出需电量 $ Q_{elec} $ 。 \\
-            需电量的计算函数为
+            我们使用热传导方程计算用来需要制热/制冷的热量，其形式为
+            \begin{equation}
+                Q = \frac{k \cdot A \cdot |\Delta T|}{L}
+            \end{equation}
+            其中\textit{Q}表示传热量，\textit{k}为导热系数，\textit{A}为传热面积，$ \Delta T $是室内外温度差，即$ t_{in} - t_{out} $。
+
+            将建筑分成墙、门窗、房顶、地面四个部分，分别计算并累加即可得到需要制热/制冷的热量，设为$ Q_{heat} $，
+            由\textit{COP}和\textit{EER}的定义可得到需电量$ Q_{elec} $和热量$ Q_{heat} $的转化关系
             \begin{equation}
                 Q_{elec} =
                 \begin{cases}
