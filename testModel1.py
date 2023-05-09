@@ -6,9 +6,7 @@ DATE: 2023/5/9
 TIME: 17:09
 """
 
-
 import matplotlib.pyplot as plt
-
 
 monthdays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 temperatures = [-1, 2, 6, 12, 22, 28, 31, 32, 26, 23, 15, 2]
@@ -51,10 +49,11 @@ def get_day_qmake(dt):
     if dt == 0:
         return 0.0
 
-    day_qmake = get_qmake(wall_thermal, wall_square, dt, wall_thickness) + \
-                get_qmake(windowAndDoor_thermal, windowAndDoor_square, dt, windowAndDoor_thickness) + \
-                get_qmake(roof_thermal, roof_square, dt, roof_thickness) + \
-                get_qmake(ground_thermal, ground_square, dt, ground_thickness)
+    day_qmake = \
+        get_qmake(wall_thermal, wall_square, dt, wall_thickness) + \
+        get_qmake(windowAndDoor_thermal, windowAndDoor_square, dt, windowAndDoor_thickness) + \
+        get_qmake(roof_thermal, roof_square, dt, roof_thickness) + \
+        get_qmake(ground_thermal, ground_square, dt, ground_thickness)
     return day_qmake
 
 
