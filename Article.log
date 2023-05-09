@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.4.18)  9 MAY 2023 18:54
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.4.18)  9 MAY 2023 19:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -493,9 +493,9 @@ Package: ninecolors 2022-02-13 vv2022D Select colors with proper color contrast
 \c@lstlisting=\count333
  [1
 
-] [2] (c:/texlive/2023/texmf-dist/tex/latex/listings/lstlang1.sty
+] (c:/texlive/2023/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2023/02/27 1.9 listings language file
-) [3]
+) [2]
 
 Package fontspec Info: Could not resolve font "FangSong/BI" (it probably
 (fontspec)             doesn't exist).
@@ -519,18 +519,18 @@ Package fontspec Info: Font family 'FangSong(0)' created for font 'FangSong'
 (fontspec)             <->"FangSong/OT:script=hani;language=dflt;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 
- (./testModel1.py [4] [5]) [6] [7] (./Article.aux)
+ (./testModel1.py [3] [4]) [5] [6] (./Article.aux)
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 11349 strings out of 478594
- 288943 string characters out of 5846243
+ 11337 strings out of 478594
+ 288215 string characters out of 5846243
  2021290 words of memory out of 5000000
- 31364 multiletter control sequences out of 15000+600000
+ 31352 multiletter control sequences out of 15000+600000
  519218 words of font info for 88 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  89i,12n,97p,406b,1887s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Article.pdf (7 pages).
+Output written on Article.pdf (6 pages).
