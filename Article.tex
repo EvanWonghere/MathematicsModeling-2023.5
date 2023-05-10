@@ -3,20 +3,50 @@
 \usepackage[UTF-8]{ctex}
 \usepackage{indentfirst}
 \usepackage{amsmath}
+\usepackage{tabularray}
+\usepackage{xcolor}
+\usepackage{listings}
+
+\lstset{
+    basicstyle          =   \sffamily,
+    keywordstyle        =   \bfseries,
+    commentstyle        =   \rmfamily\itshape,
+    stringstyle         =   \ttfamily,
+    flexiblecolumns,
+    numbers             =   left,
+    showspaces          =   false,
+    numberstyle         =   \zihao{-5}\ttfamily,
+    showstringspaces    =   false,
+    captionpos          =   t,
+    frame               =   lrtb,
+}
+
+\lstdefinestyle{Python}{
+    language        =   Python,
+    basicstyle      =   \zihao{-5}\ttfamily,
+    numberstyle     =   \zihao{-5}\ttfamily,
+    keywordstyle    =   \color{blue},
+    keywordstyle    =   [2] \color{teal},
+    stringstyle     =   \color{magenta},
+    commentstyle    =   \color{red}\ttfamily,
+    breaklines      =   true,
+    columns         =   fixed,
+    basewidth       =   0.5em,
+}
 
 \setlength{\parindent}{2em}
 \numberwithin{equation}{section}
 
 \begin{document}
 
-    \title{''双碳''目标下低碳建筑研究}
+    \title{基于''XXX''的低碳建筑研究}
     \author{}
     \date{}
     \maketitle
 
     \centerline{\textbf{\LARGE{摘要}}}
 
-    \textbf{\Large{关键词}}
+    \textbf{\large{关键词}}
 
     {\centering{\section{问题重述}}}
         \subsection{问题背景}
@@ -25,6 +55,7 @@
         低碳建筑是指在建筑材料与设备制造、施工建造和建筑物使用的整个生命周期内，减少化石能源的使用，提高能效，降低二氧化碳排放量。
 
         \subsection{目标任务}
+<<<<<<< HEAD
             \textbf{问题一：}现在有一间长 $ 4 m $ 、宽 $ 3 m $ 、高 $ 3 m $ 的单层平顶单体建筑，墙体为砖混结构，厚 $ 30 cm $ ( 热导系数 $ 0.3 W / m^{2} \cdot K $ )，
             屋顶钢筋混凝土浇筑，厚度 $ 30 cm $ ( 热导系数 $ 0.2 W / m^{2} \cdot K $ ) ，
             门窗总面积 $ 5 m^{2} $ ( 热导系数 $ 1.6 W / m^{2} \cdot K $ )，
@@ -40,28 +71,31 @@
             假设该建筑物内温度需要一直保持在 $ 18 - 26 ^{\circ}C $ ，在温度不适宜的时候要通过电来调节温度，消耗 $ 1 kW \cdot h $ 电相当于 $ 0.28kg $ 碳排放。
             请计算该建筑物通过空调(假设空调制热性能系数\textit{COP}为3.5，制冷性能系数\textit{EER}为2.7)调节温度的年碳排放量。
             (尽量使用本题所给条件计算碳排放，不考虑其他损耗)
+=======
+            \textbf{问题一：}计算给定建筑通过空调调节温度的年碳排放量。
+>>>>>>> f7a8e29dcde5931599ac4f2579e2b1384932cbaa
 
-            \textbf{问题二：}在居住建筑的整个生命周期 (建造、运行、拆除)中，影响碳排放的因素有很多，
-            如建筑设计标准、气候、建材生产运输、地区差异、建造拆除能耗、装修风格、使用能耗、建筑类型等。
-            请查找、分析资料，建立数学模型，找出与上述因素相关度大且易于量化的指标，
-            基于这些指标对居住建筑整个生命周期的碳排放进行综合评价。
+            \textbf{问题二：}建立综合评价模型，找出易于量化的指标，评估居住建筑整个生命周期的碳排放。
 
-            \textbf{问题三：}在问题2的基础上，分别考虑建筑生命周期三个阶段的碳排放问题，
-            查找相关资料，建立数学模型，对2021年江苏省13个地级市的居住建筑碳排放进行综合评价，
-            并对所建评价模型的有效性进行验证。
+            \textbf{问题三：}基于问题二，考虑建筑生命周期三个阶段的碳排放问题，对江苏省13个地级市的居住建筑进行评价，验证模型的有效性。
 
-            \textbf{问题四：}准确的碳排放预测能够为制定减排政策、优化低碳建筑设计提供重要的参考依据。
-            建立碳排放预测模型，基于江苏省建筑全过程碳排放的历史数据，对2023年江苏省建筑全过程的碳排放量进行预测。
+            \textbf{问题四：}建立碳排放预测模型，基于江苏省建筑全过程碳排放的历史数据，对2023年江苏省建筑全过程的碳排放量进行预测。
 
-            \textbf{问题五：}请结合前面的讨论给出江苏省建筑碳减排的政策建议。
+            \textbf{问题五：}结合前面的讨论给出江苏省建筑碳减排的政策建议。
 
 
     {\centering{\section{问题分析}}}
         \subsection{问题一}
             问题一要求计算通过空题调节温度产生的年碳排放量。
-            我们需先求出空调制热和制冷分别消耗的电量，借此求出空调消耗的电量，最后转换成碳排放。
+            我们需先求出空调制热和制冷的热量，借此通过\textit{COP}和\textit{EER}求出空调消耗的电量，最后转换成碳排放。
+            其中\textit{COP}和\textit{EER}的定义分别为
+            \begin{equation}
+                COP = \frac{Q_{heat}}{W},\hspace{2em} EER = \frac{Q_{cold}}{W}
+            \end{equation}
+            $ Q_{heat} / Q_{cold} $指的是单位时间内的制热/制冷量，单位为\textit{J}，
+            公式中\textit{W}指的是单位为时间内空调消耗的功率，单位为\textit{W}
 
-            首先计算出建筑物各个月的能量需求量。设室内温度要维持的温度为 $ t_{in} $， 室外温度为 $ t_{out} $,
+            首先计算出建筑物各个月的能量需求量。设室内温度要维持的温度为 $ t_{in} $，室外温度为 $ t_{out} $,
             当月该地区平均温度为 $ t_{ave} $ ，方便起见，我们规定
             \begin{equation*}
                 t_{out} = t_{ave}
@@ -74,34 +108,63 @@
                     26 ^{\circ}C & \text{ $ t_{out} > 26 ^{\circ}C $}
                 \end{cases}
             \end{equation*}
-            我们使用单位面积热负荷计算每个月的能量需求量。单位面积热负荷可由以下公式计算
-            \begin{equation}
-                q = U \cdot A \cdot |\Delta t|
-            \end{equation}
-            其中，\textit{q}为单位面积热负荷，\textit{U}为总传热系数，\textit{A}为总传热面积， $ \Delta t = t_{in} - t_{out} $ 。\\
-            总传热系数\textit{U}可由以下公式计算
-            \begin{equation}
-                U = \frac{1}{R_{wall} + R_{roof} + R_{air}}
-            \end{equation}
-            其中 $ R_{wall} $, $ R_{roof} $, $ R_{air} $ 分别为墙体、屋顶、空气层的热阻。 \\
-            由于空气层的热阻很小，在此忽略不计。墙体和屋顶的热阻可以由以下公式计算
-            \begin{equation}
-                R = \frac{d}{\lambda}
-            \end{equation}
-            其中\textit{d}为墙体或房顶的厚度， $ \lambda $ 为其热传导率。
 
-            计算得到总传热系数\textit{U}后即可进一步计算得出建筑物每月单位时间的能量需求量 $ Q_{heat} = q \cdot c $，其中\textit{c}为该月份所含单位时间数目，
-            再根据 $ \Delta t $ 判断制热还是制冷，进而计算得出需电量 $ Q_{elec} $ 。 \\
-            需电量的计算函数为
+            我们使用热传导方程计算用来需要制热/制冷的热量，其形式为
+            \begin{equation}
+                \Phi = \frac{\lambda \cdot A \cdot |\Delta T|}{\delta}
+            \end{equation}
+            其中$ \Phi $表示传热速率，$ \lambda $为导热系数，\textit{A}为传热面积，
+            $ \Delta $是室内外温度差，即$ t_{in} - t_{out} $，\textit{L}表示材料厚度。
+
+            将建筑分成墙、门窗、房顶、地面四个部分，分别计算并累加即可得到需要制热/制冷的热量，设为$ Q_{make} $，
+            由\textit{COP}和\textit{EER}的定义可得到需电量$ Q_{elec} $和热量$ Q_{make} $的转化关系
             \begin{equation}
                 Q_{elec} =
                 \begin{cases}
-                    \frac{Q_{heat}}{EER} & \text{ $ \Delta t < 0 $ } \\
+                    \frac{Q_{make}}{EER} & \text{ $ \Delta t < 0 $ } \\
                     0 & \text{ $ \Delta t = 0 $ } \\
-                    \frac{Q_{heat}}{COP} & \text{ $ \Delta t > 0 $ }
+                    \frac{Q_{make}}{COP} & \text{ $ \Delta t > 0 $ }
                 \end{cases}
             \end{equation}
 
             最后根据需电量与碳排放的换算关系 $ m = Q_{elec} \cdot 0.28 $ 求出每月碳排放后累加，即得到年度碳排放量。
+
+
+    {\centering{\section{模型假设}}}
+
+
+    {\centering{\section{符号说明}}}
+
+
+    {\centering{\section{模型的建立与求解}}}
+
+
+    {\centering{\section{结果检验与误差分析}}}
+
+
+    {\centering{\section{模型评价}}}
+
+
+    {\centering{\section{模型推广与改进}}}
+
+
+    {\centering{\section{参考文献}}}
+
+
+    {\centering{\section{附录}}}
+        \subsection*{附录A \hspace{2em} 问题一}
+            \lstinputlisting[
+                style       =   Python,
+                caption     =   {\bf testModel1.py},
+                label       =   {testModel1.py}
+            ]{testModel1.py}
+
+        \subsection*{附录B \hspace{2em} 问题二}
+
+        \subsection*{附录C \hspace{2em} 问题三}
+
+        \subsection*{附录D \hspace{2em} 问题四}
+
+        \subsection*{附录E \hspace{2em} 问题五}
 
 \end{document}
