@@ -6,6 +6,8 @@
 \usepackage{tabularray}
 \usepackage{xcolor}
 \usepackage{listings}
+\usepackage{subfigure}
+\usepackage[graphicx]{realboxes}
 
 \lstset{
     basicstyle          =   \sffamily,
@@ -119,7 +121,15 @@
 
 
     {\centering{\section{模型的建立与求解}}}
+        \subsection{问题一的模型建立与求解}
 
+        \subsection{问题二的模型建立与求解}
+            \subsubsection{建立层次结构模型}
+                \begin{figure}
+                    \centering
+                    \includegraphics[height=4.5cm,width=9.5cm]{层次分析法框架.png}
+                    \caption{层次分析法框架}
+                \end{figure}
 
     {\centering{\section{结果检验与误差分析}}}
 
@@ -131,17 +141,23 @@
 
 
     {\centering{\section{参考文献}}}
+    \newpage
 
 
     {\centering{\section{附录}}}
         \subsection*{附录A \hspace{2em} 问题一}
             \lstinputlisting[
                 style       =   Python,
-                caption     =   {\bf testModel1.py},
-                label       =   {testModel1.py}
-            ]{testModel1.py}
+                caption     =   {\bf Question1},
+                label       =   {Question1.py}
+            ]{Question1.py}
 
         \subsection*{附录B \hspace{2em} 问题二}
+            \lstinputlisting[
+                style       =   Python,
+                caption     =   {\bf Question2},
+                label       =   {Question2.py}
+            ]{Question2.py}
 
         \subsection*{附录C \hspace{2em} 问题三}
 
