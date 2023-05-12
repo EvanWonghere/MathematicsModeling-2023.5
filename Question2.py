@@ -27,16 +27,33 @@ Scores = np.array([[48.0, 126.3, 4.8],
 sums = np.sum(Scores, axis=0)
 weightedScores = Scores / sums.reshape(1, -1)
 
-weight = maxEigenvector / sum(maxEigenvector)
+# Eigenvalue average
+eigenvectorWeight = maxEigenvector / sum(maxEigenvector)
+
+# Arithmatic average
+arithmaticSums = np.sum(discriminantMatrix, axis=0)
+normalizedMatrix = discriminantMatrix / arithmaticSums.reshape(1, -1)
+arithmaticWeight = np.sum(normalizedMatrix, axis=1)
+arithmaticWeight /= dim
+arithmaticWeight = arithmaticWeight[-1::-1]
+
+# Geometric average
+prodVector = np.prod(discriminantMatrix, axis=1)
+prodVector = np.power(prodVector, 1/dim)
+prodSums = np.sum(prodVector, axis=0)
+geometricWeight = prodVector / prodSums
+geometricWeight = geometricWeight[-1::-1]
+
+weight = (arithmaticWeight + geometricWeight) / 2
 
 finalScores = np.dot(weightedScores, weight)
 for i in range(len(finalScores)):
-    print('City {:}, Scores {:}'.format(cities[i], finalScores[i, 0].real))
+    print('City {:}, Scores {:}'.format(cities[i], finalScores[i]))
 
 plt.figure(figsize=(10, 6))
 x = [1, 2, 3, 4, 5]
 x_label = cities
-plt.bar(x, finalScores[:, 0].real, fc='g')
+plt.bar(x, finalScores, fc='g')
 plt.title("Scores given by evaluation model")
 plt.xticks(x, x_label)
 plt.xlabel("City")

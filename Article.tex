@@ -171,7 +171,6 @@
 
                         \newpage
 
-
                         \item 归一化 \\
                             对各城市的数据进行归一化处理
                             \begin{table}[h]
@@ -192,17 +191,19 @@
                 \subsubsection{层次单排序及一致性检验}
                     \begin{enumerate}
                         \item 层次单排序 \\
-                            和积法：取判断矩阵\textit{n}个列向量归一化后的算术平均值，近似作为权重，即
+                            \textbf{和积法}（算术平均法）：取判断矩阵\textit{n}个列向量归一化后的算术平均值，近似作为权重，即
                             \begin{equation}
-                                W_{i} = \frac{1}{n} \sum_{j=1}^{n} \frac{(\prod_{j=1}^{n} a_{ij})^{\frac{1}{n}}}{\sum_{k=1}^{n} (\prod_{j=1}^{n} a_{kj})^{\frac{1}{n}}} (i = 1, 2, \cdots, n)
+                                W_{i} = \frac{1}{n} \sum_{j=1}^{n} \frac{a_{ij}}{\sum_{k=1}^{n} a_{kj}} (i = 1, 2, \cdots, n)
                             \end{equation}
 
-                            求根法（几何平均法）：将比较矩阵的各列（或行）向量求几何平均后归一化，可近似作权重，即
+                            \textbf{求根法}（几何平均法）：将比较矩阵的各列（或行）向量求几何平均后归一化，可近似作权重，即
                             \begin{equation}
                                 W_{i} = \sum_{j=1}^{n} \frac{(\prod_{j=1}^{n} a_{ij})_{\frac{1}{n}}}{\sum_{k=1}^{n} (\prod_{j=1}^{n})_{\frac{1}{n}}} (i = 1, 2, \cdots, n)
                             \end{equation}
 
-                            在我们的模型中综合采用了两种方法得到权重，降低了单一方法带来的不确定性，使数据结果更加可靠。
+                            \textbf{特征值法}：求出矩阵的最大特征值以及其对应的特征向量，对求出的特征向量进行归一化即可得到我们的权重。
+
+                            在我们的模型中综合采用了三种方法得到权重，降低了单一方法带来的不确定性，使数据结果更加可靠。
 
 
                         \item 一致性检验 \\
@@ -254,8 +255,9 @@
                         w_i = \frac{t_i}{\sum_{i=1}^{n} t_i}
                     \end{equation*}
                     \newline
+                    随后分别通过公式 (5.2)和公式 (5.3)求得两个权重向量， 最后将三个权重向量取算术平均作为最终的权重向量。
                     设指标评分矩阵为\textit{P}，那么最后的得分矩阵\textit{S}为：
-                    \[ S = P \times W \]
+                    \[ S = P \cdot W \]
 
     {\centering{\section{结果检验与误差分析}}}
 

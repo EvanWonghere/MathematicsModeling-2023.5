@@ -1,11 +1,3 @@
-# -*- coding:utf-8 -*-
-"""
-Project: MathematicsModeling-2023.5
-Written by: Evan Wong
-DATE: 2023/5/9
-TIME: 17:09
-"""
-
 import matplotlib.pyplot as plt
 
 monthdays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
