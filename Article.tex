@@ -8,6 +8,8 @@
 \usepackage{listings}
 \usepackage{subfigure}
 \usepackage[graphicx]{realboxes}
+\usepackage{diagbox}
+\usepackage{multirow}
 
 \lstset{
     basicstyle          =   \sffamily,
@@ -125,11 +127,135 @@
 
         \subsection{问题二的模型建立与求解}
             \subsubsection{建立层次结构模型}
-                \begin{figure}
+                \begin{figure}[h]
                     \centering
                     \includegraphics[height=4.5cm,width=9.5cm]{层次分析法框架.png}
                     \caption{层次分析法框架}
                 \end{figure}
+                准则层中准则因素之间相互独立。 \\
+                我们选择的准则因素有：生活使用能耗、地区差异、周边产业、建造与拆除能耗、生产运输。
+
+            \subsubsection{构建成对比较矩阵及归一化}
+                \begin{enumerate}
+                    \item 构建比较矩阵 \\
+                        \qquad 构造比较矩阵是通过比较同一层次上的各因素对上–层相关因素的影响作用.而不是把所有因素放在一起比较，即将同一层的各因素进行两两对比。
+                        设某层有n个因素，$ x = \{x_{1}, x_{2} \dots x_{n}\} $要比较它们对上一层某一准则 (或目标)的影响程度，确定在该层中相对于某一准则所占的比重。
+                        上述比较是两两因素之间进行的比较，比较时常取1~9尺度。
+
+                        \begin{table}[h]
+                            \centering
+                            \begin{tabular}{|c|c|} \hline
+                                尺度 & 含义 \\ \hline
+                                1 & 第i个因素与第j个因素影响相同 \\ \hline
+                                3 & 第i个因素与第j个因素影响稍强 \\ \hline
+                                5 & 第i个因素与第j个因素影响较强 \\ \hline
+                                7 & 第i个因素与第j个因素影响明显强 \\ \hline
+                                9 & 第i个因素与第j个因素影响极端强 \\ \hline
+                                2, 4, 6, 8 & 两相邻判断的中间值 \\ \hline
+                            \end{tabular}
+                        \end{table}
+
+                        用$ a_{ij} $表示第i个因素相对于第j个因素的比较结果，则
+                        \[ a_{ij} = \frac{1}{a_{ji}} \]
+                        \begin{equation}
+                            A = (a_{ij})_{n \times n} =
+                            \begin{pmatrix}
+                                a_{11} & a_{12} & \cdots & a_{1n} \\
+                                a_{21} & a_{22} & \cdots & a_{2n} \\
+                                \cdots & \cdots & \cdots & \cdots \\
+                                a_{n1} & a_{n2} & \cdots & a_{nn}
+                            \end{pmatrix}
+                        \end{equation}
+
+                        A则称为成对比较矩阵。
+
+                        \newpage
+
+
+                        \item 归一化 \\
+                            对各城市的数据进行归一化处理
+                            \begin{table}[h]
+                                \centering
+                                \begin{tabular}[h]{|l|c|c|c|c|c|} \hline
+                                    \diagbox{指标}{数据}{城市} & 苏州 & 南京 & 南通 & 无锡 & 常州 \\ \hline
+                                    直接 & 48 & 51.5 & 27 & 57.2 & 29 \\ \hline
+                                    间接 & 126.3 & 134.3 & 118.7 & 97.8 & 71.6 \\ \hline
+                                    运营 & 4.8 & 4.9 & 3.5 & 2.7 & 2.8 \\ \hline
+                                    \multirow{3}{*}{归一化比例} & 0.226 & 0.242 & 0.127 & 0.269 & 0.126 \\ \cline{2-6}
+                                    ~ & 0.230 & 0.245 & 0.216 & 0.178 & 0.130 \\ \cline{2-6}
+                                    ~ & 0.257 & 0.262 & 0.187 & 0.144 & 0.150 \\ \hline
+                                \end{tabular}
+                            \end{table}
+                    \end{enumerate}
+
+
+                \subsubsection{层次单排序及一致性检验}
+                    \begin{enumerate}
+                        \item 层次单排序 \\
+                            和积法：取判断矩阵\textit{n}个列向量归一化后的算术平均值，近似作为权重，即
+                            \begin{equation}
+                                W_{i} = \frac{1}{n} \sum_{j=1}^{n} \frac{(\prod_{j=1}^{n} a_{ij})^{\frac{1}{n}}}{\sum_{k=1}^{n} (\prod_{j=1}^{n} a_{kj})^{\frac{1}{n}}} (i = 1, 2, \cdots, n)
+                            \end{equation}
+
+                            求根法（几何平均法）：将比较矩阵的各列（或行）向量求几何平均后归一化，可近似作为全中，即
+                            \begin{equation}
+                                W_{i} = \sum_{j=1}^{n} \frac{(\prod_{j=1}^{n} a_{ij})_{\frac{1}{n}}}{\sum_{k=1}^{n} (\prod_{j=1}^{n})_{\frac{1}{n}}} (i = 1, 2, \cdots, n)
+                            \end{equation}
+
+                            在我们的模型中综合采用了两种方法得到权重，降低了单一方法带来的不确定性，使数据结果更加可靠。
+
+
+                        \item 一致性检验 \\
+                        通常情况下，由实际得到的判断矩阵不一定是一致的，即不一定满足传递性和一致性实际中，也不必要求一致性绝对成立，
+                        但要求大体上是一致的，即不一致的程度应在容许的范围内主要考查以下指标：
+                            \begin{enumerate}
+                                \item 一致性指标\textit{CI}
+                                    \begin{equation}
+                                        CI = \frac{\lambda _{\max} - n}{n - 1}
+                                    \end{equation}
+
+                                \item 平均随机一致性指标\textit{RI} \\
+                                    为衡量\textit{CI}的大小，引入随机一致性指标\textit{RI}：
+                                    \begin{equation}
+                                        RI = \frac{CI_{1} + CI_{2} + \cdots + CI_{n}}{n}
+                                    \end{equation}
+                                    其中，随机一致性指标\textit{RI}和判断矩阵的阶数有关，一般情况下，
+                                    矩阵阶数越大，则出现一致性随机偏离的可能性也越大，对于阶数小于9，其对应关系如图：
+                                    \begin{table}[h]
+                                        \centering
+                                        \begin{tabular}{l|c c c c c c c c c} \hline
+                                            \textit{n} & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\ \hline
+                                            \textit{RI} & 0 & 0 & 0.58 & 0.90 & 1.12 & 1.24 & 1.32 & 1.41 & 1.45 \\ \hline
+                                        \end{tabular}
+                                    \end{table}
+
+                                \item 检验系数\textit{CR} \\
+                                    考虑到一致性的偏离有可能是由于随机原因造成的，因此在检验判断矩阵是否具有满意的一致性时，
+                                    还需将\textit{CI}和\textit{RI}进行比较，得出检验系数\textit{CR}，公示如下：
+                                    \begin{equation}
+                                        CR = \frac{CI}{RI}
+                                    \end{equation}
+                                    一般地，如果$ CR \le 0.1 $，则认为该判断矩阵通过一致性检验，$ A_{\max} $对应的特征向量\textit{W}可以作为排序的权重向量，此时
+                                    \begin{equation}
+                                        \lambda _{\max} \approx \sum_{i=1}^{n} \frac{(A \cdot W)_{i}}{nw_{i}} = \frac{1}{n} \sum_{i=1}^{n} \frac{\sum_{j=1}^{n} a_{ij}w_{j}}{w_{i}}
+                                    \end{equation}
+                                    否则就不具有满意一致性，需要调整对比较矩阵。
+                            \end{enumerate}
+                    \end{enumerate}
+
+
+                \subsubsection{计算组合权重及得分}
+                    得到最大特征值对应的特征向量
+                    \[ T = [t_1 \quad t_2 \quad \cdots \quad t_n] \]
+                    \newline
+                    计算得到权重向量
+                    \[ W = [w_1 \quad w_2 \quad \cdots \quad w_n ] \]
+                    \begin{equation*}
+                        w_i = \frac{t_i}{\sum_{i=1}^{n} t_i}
+                    \end{equation*}
+                    \newline
+                    设指标评分矩阵为\textit{P}，那么最后的得分矩阵\textit{S}为：
+                    \[ S = P \times W \]
 
     {\centering{\section{结果检验与误差分析}}}
 
