@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.4.18)  12 MAY 2023 18:56
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.4.18)  12 MAY 2023 20:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -601,44 +601,4 @@ Package: ninecolors 2022-02-13 vv2022D Select colors with proper color contrast
 ]
 File: 层次分析法框架.png Graphic file (type bmp)
 <层次分析法框架.png>
- [2] [3] [4] [5] [6] [7] (c:/texlive/2023/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2023/02/27 1.9 listings language file
-)
-
-Package fontspec Info: Could not resolve font "FangSong/BI" (it probably
-(fontspec)             doesn't exist).
-
-
-Package fontspec Info: Could not resolve font "FangSong/B" (it probably
-(fontspec)             doesn't exist).
-
-
-Package fontspec Info: Could not resolve font "FangSong/I" (it probably
-(fontspec)             doesn't exist).
-
-
-Package fontspec Info: Font family 'FangSong(0)' created for font 'FangSong'
-(fontspec)             with options [Script={CJK}].
-(fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
-(fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->"FangSong/OT:script=hani;language=dflt;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-
- (./Question1.py [8] [9]) (./Question2.py [10]) [11] (./Article.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
-Here is how much of TeX's memory you used:
- 12835 strings out of 478594
- 315943 string characters out of 5846243
- 2059290 words of memory out of 5000000
- 32785 multiletter control sequences out of 15000+600000
- 519218 words of font info for 88 fonts, out of 8000000 for 9000
- 36 hyphenation exceptions out of 8191
- 89i,17n,97p,405b,1989s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-Output written on Article.pdf (11 pages).
+ [2] [3] [4
