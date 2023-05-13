@@ -1,3 +1,4 @@
+% !Tex root = Article.tex
 \documentclass[a4paper, 12pt]{article}
 
 \usepackage[UTF-8]{ctex}
@@ -43,7 +44,7 @@
 
 \begin{document}
 
-    \title{基于''XXX''的低碳建筑研究}
+    \title{基于''层次分析法''and''灰色预测模型''的低碳建筑研究}
     \author{}
     \date{}
     \maketitle
@@ -72,6 +73,24 @@
 
     {\centering{\section{问题分析}}}
         \subsection{问题一}
+
+        \subsection{问题二}
+
+        \subsection{问题三}
+
+        \subsection{问题四}
+
+        \subsection{问题五}
+
+
+    {\centering{\section{模型假设}}}
+
+
+    {\centering{\section{符号说明}}}
+
+
+    {\centering{\section{模型的建立与求解}}}
+        \subsection{问题一的模型建立与求解}
             问题一要求计算通过空题调节温度产生的年碳排放量。
             我们需先求出空调制热和制冷的热量，借此通过\textit{COP}和\textit{EER}求出空调消耗的电量，最后转换成碳排放。
             其中\textit{COP}和\textit{EER}的定义分别为
@@ -116,15 +135,6 @@
             最后根据需电量与碳排放的换算关系 $ m = Q_{elec} \cdot 0.28 $ 求出每月碳排放后累加，即得到年度碳排放量。
 
 
-    {\centering{\section{模型假设}}}
-
-
-    {\centering{\section{符号说明}}}
-
-
-    {\centering{\section{模型的建立与求解}}}
-        \subsection{问题一的模型建立与求解}
-
         \subsection{问题二的模型建立与求解}
             \subsubsection{建立层次结构模型}
                 \begin{figure}[h]
@@ -134,6 +144,7 @@
                 \end{figure}
                 准则层中准则因素之间相互独立。 \\
                 我们选择的准则因素有：生活使用能耗、地区差异、周边产业、建造与拆除能耗、生产运输。
+
 
             \subsubsection{构建成对比较矩阵及归一化}
                 \begin{enumerate}
@@ -238,7 +249,7 @@
                                     \end{equation}
                                     一般地，如果$ CR \le 0.1 $，则认为该判断矩阵通过一致性检验，$ A_{\max} $对应的特征向量\textit{W}可以作为排序的权重向量，此时
                                     \begin{equation}
-                                        \lambda _{\max} \approx \sum_{i=1}^{n} \frac{(A \cdot W)_{i}}{nw_{i}} = \frac{1}{n} \sum_{i=1}^{n} \frac{\sum_{j=1}^{n} a_{ij}w_{j}}{w_{i}}
+                                        \lambda _{\max} \approx \sum_{i=1}^{n} \frac{ (A \cdot W)_{i}}{nw_{i}} = \frac{1}{n} \sum_{i=1}^{n} \frac{\sum_{j=1}^{n} a_{ij}w_{j}}{w_{i}}
                                     \end{equation}
                                     否则就不具有满意一致性，需要调整对比较矩阵。
                             \end{enumerate}
@@ -295,9 +306,105 @@
                             \end{equation}
                             如果$ \lambda (k) $在区间
                             \[ (e^{-\frac{2}{n + 1}}, e^{\frac{2}{n + 2}}) \]
-                            则说明可用GM (1,1)模型。
+                            内，说明可用GM (1,1)模型，其中$ x^{ (0)} (t) $ 是 \textit{年份-数据}序列。
+
+                            如果$ \lambda (k) $在该区间外，则可尝试通过平移变换，将每个数据都加上某一常数\textit{c}，
+                            再看$ \lambda (k) $是否在区间内，最后模型结果再减去\textit{c}即可.
+                            如果无论如何进行平移变换$ \lambda (k) $始终在该区间外，则说明该问题不适合用GM (1, 1)。
+
+                            而经过计算，我们的数据可以通过级比检验。
+
+                        \item \textbf{构造累加生成序列} \\
+                            由于历史数据量少且无明显规律，难以预测，我们使用累加生成法得到一个新的序列$ x^{ (1)} (t) $，
+                            并尝试用数学方法拟合新序列进而预测。累加生成序列公式为：
+                            \begin{equation}
+                                x^{ (1)} (k) = \sum_{i=1}^{k} x^{ (0)} (i)
+                            \end{equation}
+
+                        \item \textbf{构建一阶常微分方程} \\
+                            通常情况下，累加生成序列的图像可用指数函数图像拟合，而一阶常微分方程的通解形式恰是指数函数，
+                            因此我们构建一阶常微分方程，通过求解这个方程得到预测函数。 \\
+                            该一阶常微分方程的形式为：
+                            \begin{equation}
+                                \frac{dx^{ (1)}}{dt} + ax^{ (1)} = u
+                            \end{equation}
+                            其中\textit{a, u}为未知参数。
                     \end{enumerate}
 
+
+                \subsubsection{模型的求解}
+                    \begin{enumerate}
+                        \item \textbf{方程式改写} \\
+                            由于数据是离散而非连续的，首先将$ \frac{dx^{ (1)}}{dt} $改写成$ \frac{\Delta x^{ (1)}}{\Delta t} $。
+                            而由于\textit{t}的单位是年份，因此始终有$ \Delta t = (t + 1) - t = 1 $，因此我们得到新形式的方程 \\
+                            \[ x^{ (0)} (t) + ax^{ (1)} (t) = u \]
+                            移项得到：
+                            \begin{equation}
+                                x^{ (0)} (t) = -ax^{ (1)} (t) + u
+                            \end{equation}
+                            得到该方程后，注意到可以通过最小二乘法求得最佳的参数\textit{a}和\textit{u}。
+
+
+                        \item \textbf{最小二乘法求解最佳参数} \\
+                            方程 (5.14)的矩阵形式为$ Y = BU $，具体形式为：
+                            \begin{equation}
+                                \begin{bmatrix}
+                                    x^{ (0)} (2) \\
+                                    x^{ (0)} (3) \\
+                                    \vdots \\
+                                    x^{ (0)} (N)
+                                \end{bmatrix}
+                                =
+                                \begin{bmatrix}
+                                    -\frac{1}{2} [ x^{ (1)} (2) + x^{ (1)} (1) & 1] \\
+                                    -\frac{1}{2} [ x^{ (1)} (3) + x^{ (1)} (2) & 1] \\
+                                    \vdots & 1 \\
+                                    -\frac{1}{2} [ x^{ (1)} (N) + x^{ (1)} (N - 1) & 1]
+                                \end{bmatrix}
+                                \begin{bmatrix}
+                                    a \\
+                                    u
+                                \end{bmatrix}
+                            \end{equation}
+
+                            我们要最小二乘法要求解的目标就是$ (Y - BU)^{T}(Y - BU) $去最小时的\textit{U}。
+                            求解\textit{U}的估计值的方法为
+                            \[ \hat{U} = [\hat{a}, \hat{u}] = (B^{T}B)^{-1}B^{T}Y \]
+                            借此求得参数\textit{a, u}的最佳近似值$ \hat{a}, \hat{u} $后，即可求解微分方程得到拟合函数。
+
+
+                        \item \textbf{求解微分方程} \\
+                            通过方才求解到的$ \hat{a}, \hat{u} $，代入方程 (5.14)，求得方程的解：
+                            \begin{equation}
+                                \hat{x}^{(1)} (k + 1) = (x^{(0)}(1) - \frac{\hat{u}}{\hat{a}})e^{-\hat{a}k} + \frac{\hat{u}}{\hat{a}}, \quad k = 0, 1, \cdots
+                            \end{equation}
+                            当\textit{k}小于已有数据量是，求得的为拟合值，大于时则是预测值。
+                            需要注意的是求得的为$ \hat{x}^{(1)} $，是累加生成序列，真正要求的原始序列$ \hat{x}^{(0)} $需要再通过差分法求得，即：
+                            \begin{equation}
+                                \hat{x}^{(0)}(k) =
+                                \begin{cases}
+                                    \hat{x}^{(1)}(1) & k = 1 \\
+                                    \hat{x}^{(1)}(k) - \hat{x}^{(1)}(k - 1) & k > 1
+                                \end{cases}
+                            \end{equation}
+                    \end{enumerate}
+
+
+                \subsubsection{模型的检验}
+                    最后需要对我们的模型进行检验，判断拟合值是否能较好地逼近实际值。常用的检验方法有：\textit{级比偏差检验、残差检验、后验差比检验等}。\\
+                    我们选择的方法是后验差比检验，通过后验差比值\textit{C}的大小来判断模型的预测精度，其计算公式为：
+                    \begin{equation}
+                        C = \frac{\sigma _{1}}{\sigma _{2}}
+                    \end{equation}
+                    其中$ \sigma _{1}, \sigma _{2} $分别表示历史数据方差和残差方差。 \\
+                    若\textit{C}值小于0.35，则可说明模型精度高；若小于0.5，则说明模型精度合格；若小于0.65，则说明模型精度基本合格；若大于0.65，则说明模型精度不合格。
+
+                    模型拟合结果与预测和历史记录对比图如下：
+                    \begin{figure}[h]
+                        \centering
+                        \includegraphics[height=9cm,width=15cm]{fit_and_his_q4.png}
+                        \caption{COMPARISON}
+                    \end{figure}
 
     {\centering{\section{结果检验与误差分析}}}
 
@@ -306,6 +413,13 @@
 
 
     {\centering{\section{模型推广与改进}}}
+        \subsection{预测模型的改进}
+            \subsubsection{方程式修正}
+                考虑到原方程中含有$ \frac{\Delta x^{ (1)}}{\Delta t} $，
+                因此将$ x^{ (1)} (t) $修正为均值生成序列$ z^{ (1)} (t) $，计算公式为
+                \[ z^{ (1)} (t) = \frac{x^{ (1)} (t)}{2} + \frac{x^{ (1)} (t - 1)}{2} + \cdots, \quad t = 2, \ldots, n \]
+                即方程改写为
+                \[ x^{ (0)} (t) = -az^{ (1)} (t) + u \]
 
 
     {\centering{\section{参考文献}}}
@@ -335,6 +449,11 @@
             ]{Question3.py}
 
         \subsection*{附录D \hspace{2em} 问题四}
+            \lstinputlisting[
+                style       =   Python,
+                caption     =   {\bf Question4},
+                label       =   {Question4.py}
+            ]{Question4.py}
 
         \subsection*{附录E \hspace{2em} 问题五}
 
