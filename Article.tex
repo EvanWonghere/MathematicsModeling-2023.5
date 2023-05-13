@@ -259,6 +259,46 @@
                     设指标评分矩阵为\textit{P}，那么最后的得分矩阵\textit{S}为：
                     \[ S = P \cdot W \]
 
+
+            \subsection{问题三的模型建立与求解}
+                \subsubsection{模型的建立}
+                    基于第二问所建模型，通过建筑生命周期的三个阶段确定代表性强的指标加入模型评价。我们选取的指标有： \\
+                    \textit{建造阶段：建筑材料生产运输的碳排放系数、建造过程所产生的碳排放} \\
+                    \textit{运行阶段：生活使用能耗、气候原因、地区差异、周边产业} \\
+                    \textit{建造阶段：拆除过程的能耗}
+
+                \subsubsection{模型的验证}
+                    为了验证模型的有效性，我们将2021年江苏省13个地级市的居住建筑碳排放作为输入输入到所建立模型中进行综合评价，
+                    并将得到的结果排名与实际的排名进行比较，结果如图：
+                    \newpage
+                    \begin{figure}[h]
+                        \centering
+                        \includegraphics[height=9cm,width=15cm]{contrast_q3.png}
+                        \caption{CONTRAST}
+                    \end{figure}
+                    通过比较来看，评价模型的评价结果与实际结果吻合得较好，很好的验证了所建立模型的有效性。
+
+
+            \subsection{问题四的模型建立与求解}
+                \subsubsection{模型的分析}
+                    本题是分析预测2023年江苏省建筑全过程的碳排放量。
+                    由于要求基于江苏省建筑全过程碳排放的历史数据建立预测模型，用于分析江苏省未来建筑全过程的碳排放量，
+                    因此我们采用信息不完全、不充分的预测系统——灰色预测，建立灰色预测模型GM (1,1)模型，基于历史时期数据去预测未来时期数据。
+
+                \subsubsection{模型的建立}
+                    \begin{enumerate}
+                        \item \textbf{级比检验} \\
+                            级比检验用于判断数据序列进行模型构建的适用性,如果通过了该检验，则可以使用灰色预测。
+                            计算公式为：
+                            \begin{equation}
+                                \lambda (k) = \frac{x^{ (0)} (k - 1)}{x^{ (0)} (k)}, k = 2, 3, \ldots, n
+                            \end{equation}
+                            如果$ \lambda (k) $在区间
+                            \[ (e^{-\frac{2}{n + 1}}, e^{\frac{2}{n + 2}}) \]
+                            则说明可用GM (1,1)模型。
+                    \end{enumerate}
+
+
     {\centering{\section{结果检验与误差分析}}}
 
 
@@ -288,6 +328,11 @@
             ]{Question2.py}
 
         \subsection*{附录C \hspace{2em} 问题三}
+            \lstinputlisting[
+                style       =   Python,
+                caption     =   {\bf Question3},
+                label       =   {Question3.py}
+            ]{Question3.py}
 
         \subsection*{附录D \hspace{2em} 问题四}
 
