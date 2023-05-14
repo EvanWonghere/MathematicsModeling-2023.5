@@ -50,6 +50,8 @@
     \date{}
     \maketitle
 
+    \thispagestyle{empty}
+
     \centerline{\textbf{\LARGE{承诺书}}}
     \vspace{22pt}
     我们仔细阅读了山东师范大学数学建模竞赛的规则。
@@ -72,6 +74,10 @@
     \end{table}
 
     \newpage
+
+    \pagestyle{plain}
+    \setcounter{page}{1}
+    \pagenumbering{arabic}
 
     \centerline{\LARGE{基于''层次分析法''和''灰色预测模型''}}
     \centerline{\LARGE{的低碳建筑研究}}
@@ -386,7 +392,7 @@
                     基于第二问所建模型，通过建筑生命周期的三个阶段确定代表性强的指标加入模型评价。我们选取的指标有： \\
                     \textit{建造阶段：建筑材料生产运输的碳排放系数、建造过程所产生的碳排放} \\
                     \textit{运行阶段：生活使用能耗、气候原因} \\
-                    \textit{建造阶段：拆除过程的能耗}
+                    \textit{拆除阶段：拆除过程的能耗}
 
                 \subsubsection{模型的验证}
                     为了验证模型的有效性，我们将2021年江苏省13个地级市的居住建筑碳排放作为输入输入到所建立模型中进行综合评价，
