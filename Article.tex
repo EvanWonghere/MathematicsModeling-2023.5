@@ -12,6 +12,7 @@
 \usepackage{diagbox}
 \usepackage{multirow}
 \usepackage[colorlinks, linkcolor=blue]{hyperref}
+\usepackage{enumerate}
 
 \lstset{
     basicstyle          =   \sffamily,
@@ -134,7 +135,7 @@
 
         \subsection{问题五}
             经过以上分析，我们对江苏省建筑碳减排的政策的建议如下
-            \begin{enumerate}
+            \begin{enumerate}[(1)]
                 \item 建筑设计标准：加强建筑能效等级和节能措施的规定，提高被动设计的实现率。鼓励使用绿色环保材料，减少建筑材料的使用量。
                 \item 促进可再生能源利用：鼓励建筑采用太阳能、地源热泵等可再生能源设施，减少对传统能源的依赖，降低运行阶段的碳排放量。
                 \item 改善建筑使用效率：推广智能化节能控制系统，优化空调、照明、通风等系统的运行方式，减少不必要的能源消耗。
@@ -152,7 +153,7 @@
 
 
     {\centering{\section{模型假设}}}
-        \begin{enumerate}
+        \begin{enumerate}[(1)]
             \item 假设建筑地面相当于厚度一米的导热层，假设门窗厚度为0.1m；
             \item 假设室外温度为月平均温度，假设空调只在室外温度不在目标温度区间时才开启；
             \item 假设开空调的目的是使温度保持在目标温度区间上界或下届（取接近一方），不考虑刚开关空调时室内温度逐渐上升或逐渐下降的情况；
@@ -265,7 +266,7 @@
 
 
             \subsubsection{构建成对比较矩阵及归一化}
-                \begin{enumerate}
+                \begin{enumerate}[(1)]
                     \item 构建比较矩阵 \\
                         \qquad 构造比较矩阵是通过比较同一层次上的各因素对上–层相关因素的影响作用.而不是把所有因素放在一起比较，即将同一层的各因素进行两两对比。
                         设某层有n个因素，$ x = \{x_{1}, x_{2} \dots x_{n}\} $要比较它们对上一层某一准则 (或目标)的影响程度，确定在该层中相对于某一准则所占的比重。
@@ -316,7 +317,7 @@
 
 
                 \subsubsection{层次单排序及一致性检验}
-                    \begin{enumerate}
+                    \begin{enumerate}[(1)]
                         \item 层次单排序 \\
                             \textbf{和积法}（算术平均法）：取判断矩阵\textit{n}个列向量归一化后的算术平均值，近似作为权重，即
                             \begin{equation}
@@ -413,7 +414,7 @@
                     因此我们采用信息不完全、不充分的预测系统——灰色预测，建立灰色预测模型GM (1,1)模型，基于历史时期数据去预测未来时期数据。
 
                 \subsubsection{模型的建立}
-                    \begin{enumerate}
+                    \begin{enumerate}[(1)]
                         \item \textbf{级比检验} \\
                             级比检验用于判断数据序列进行模型构建的适用性,如果通过了该检验，则可以使用灰色预测。
                             计算公式为：
@@ -449,7 +450,7 @@
 
 
                 \subsubsection{模型的求解}
-                    \begin{enumerate}
+                    \begin{enumerate}[(1)]
                         \item \textbf{方程式改写} \\
                             由于数据是离散而非连续的，首先将$ \frac{dx^{ (1)}}{dt} $改写成$ \frac{\Delta x^{ (1)}}{\Delta t} $。
                             而由于\textit{t}的单位是年份，因此始终有$ \Delta t = (t + 1) - t = 1 $，因此我们得到新形式的方程 \\
@@ -526,8 +527,6 @@
 
     {\centering{\section{结果检验与误差分析}}}
         \subsection{问题三结果检验}
-<<<<<<< HEAD
-=======
             为了验证模型的有效性，我们将 2021 年江苏省 13 个地级市的居住建
             筑碳排放作为输入输入到所建立模型中进行综合评价，并将得到的结果排
             名与实际的排名进行比较，得到以下数据：\\
@@ -553,7 +552,6 @@
                 \includegraphics[height=9cm,width=15cm]{fit_and_his_q4.png}
                 \caption{COMPARISON}
             \end{figure}
->>>>>>> 8d617c6f1c3184dc6152163c45efed9ce3dcf82a
 
 
     {\centering{\section{模型评价}}}
