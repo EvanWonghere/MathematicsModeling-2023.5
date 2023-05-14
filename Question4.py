@@ -85,6 +85,7 @@ def get_fitted_data0(fitted_data1):
 
 def test_model_accuracy(_histo_var, _diff_var):
     _c = _histo_var / _diff_var
+    print("C " + str(_c))
     if _c < 0.35:
         print("High model accuracy!")
     elif _c < 0.5:

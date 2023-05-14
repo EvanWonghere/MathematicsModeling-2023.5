@@ -11,6 +11,7 @@
 \usepackage[graphicx]{realboxes}
 \usepackage{diagbox}
 \usepackage{multirow}
+\usepackage[colorlinks, linkcolor=blue]{hyperref}
 
 \lstset{
     basicstyle          =   \sffamily,
@@ -44,14 +45,49 @@
 
 \begin{document}
 
-    \title{基于''层次分析法''和''灰色预测模型''的低碳建筑研究}
+    \title{2023年山东师范大学本科生数学建模竞赛第一页}
     \author{}
     \date{}
     \maketitle
 
-    \centerline{\textbf{\LARGE{摘要}}}
+    \centerline{\textbf{\LARGE{承诺书}}}
+    \vspace{22pt}
+    我们仔细阅读了山东师范大学数学建模竞赛的规则。
 
-    \textbf{\large{关键词}}
+    我们知道，抄袭别人的成果是违反竞赛章程和参赛规则的，如果引用别人的成果或其他公开的资料（包括网上查到的资料），必须按照规定的参考文献的表述方式在正文引用处和参考文献中明确列出。
+
+    我们郑重承诺，严格遵守竞赛章程和参赛规则，以保证竞赛的公正、公平性。如有违反竞赛章程和参赛规则的行为，我们将受到严肃处理。
+
+    我们授权山东师范大学数学建模竞赛指导中心，可将我们的论文以任何形式进行公开展示（包括进行网上公示，在书籍、期刊和其他媒体进行正式或非正式发表等）。
+
+    \begin{table}
+        \centering
+        \caption{队伍信息表}
+        \begin{tabular}{|c|c|c|c|c|c|} \hline
+            姓名 & 学院简写 & 学号 & 手机 & QQ号 & 获得建模相关奖项 \\ \hline
+            贾庆志 & 信工 & 202211000109 & 19862178002 & 2120786474 & 无 \\ \hline
+            刘权林 & 信工 & 202211000151 & 15523505879 & 3025684615 & 无  \\ \hline
+            黄昱峰 & 信工 & 202211000139 & 15717087699 & 1280797395 & 无 \\ \hline
+        \end{tabular}
+    \end{table}
+
+    \newpage
+
+    \centerline{\LARGE{基于''层次分析法''和''灰色预测模型''}}
+    \centerline{\LARGE{的低碳建筑研究}}
+    \vspace{22pt}
+
+    \centerline{\textbf{\LARGE{摘要}}}
+    本文主要研究了在居住建筑的整个生命周期影响碳排放的主要因素和对建筑碳排放的预测，并建立了层次结构模型和灰色预测模型。
+    对于问题一，我们使用热传导方程计算用来需要制热/制冷的热量总和，再根据热量算出空调制冷/供暖所需的电量总和，乘上系数0.28即可得出年度碳排放量。
+    对于问题二，我们选择建立层次结构模型并在构建各因素的成对比较矩阵和将个城市的碳排放数据归一化的前提下进行三种方法（和积法，求根法，特征值法）的层次单排序和一致性检验，其中一致性检验主要考察的指标为一致性指标（CI），平均随机一致性指标（RI）和检验系数（CR），其中
+    \[ CR = \frac{CI}{RI} \]
+    一般地，如果$ CR ≤ 0.1 $，则认为该判断矩阵通过一致性检验，$ A_{\max} $对应的特征向量W可以作为排序的权重向量，计算得到最大特征值$ \lambda _{\max} $对应的特征向量\textit{T}和权重向量\textit{W}，最后将三个权重向量取算术平均作为最终的权重向量。设指标评分矩阵为\textit{P}，那么最后的得分矩阵\textit{P}为
+    \[ S = P \cdot W \]
+    对于问题三，我们基于第二问所建模型，通过建筑生命周期的三个阶段确定代表性强的指标加入模型评价，并将2021年江苏省13个地级市的居住建筑碳排放作为输入输入到所建立模型中进行综合评价，并将得到的结果排名与实际的排名进行比较。
+    对于问题四我们选择了建立灰色预测模型，并对模型建立进行了级比检验，构造累加生成序列，构建一阶常微分方程工作。对于模型的求解，第一步我们先完成了方程的改写，然后通过最小二乘法求解最佳的参数的近似值，并借此求解微分方程得到拟合函数。最后通过后验差比值C的大小来判断模型的预测精度，$ C = \frac{\sigma _{1}}{\sigma _{2}} $;可达模型拟合结果与预测和历史记录对比图。
+    对于问题五，我们基于对于前面的问题给出了江苏省筑碳减排的几条政策建议。 \\
+    \textbf{关键词：碳排放，热传导方程，层次结构模型，权重，一致性检验，矩阵，灰色预测、生成序列，微分方程，最小二乘法，最佳参数，模型结果，筑碳减排}
 
     {\centering{\section{问题重述}}}
         \subsection{问题背景}
@@ -91,11 +127,7 @@
             注意到数据和预测目标有数据量较少、预测目标较近期的特点，我们选择使用构建灰色预测GM (1, 1)模型作为预测模型。
 
         \subsection{问题五}
-<<<<<<< HEAD
-        经过以上分析，我们对江苏省建筑碳减排的政策的建议如下
-=======
             经过以上分析，我们对江苏省建筑碳减排的政策的建议如下
->>>>>>> 9de725819d54d85e2847062dc208fdf995334f6e
             \begin{enumerate}
                 \item 建筑设计标准：加强建筑能效等级和节能措施的规定，提高被动设计的实现率。鼓励使用绿色环保材料，减少建筑材料的使用量。
                 \item 促进可再生能源利用：鼓励建筑采用太阳能、地源热泵等可再生能源设施，减少对传统能源的依赖，降低运行阶段的碳排放量。
@@ -122,8 +154,11 @@
         \end{enumerate}
 
 
+    \newpage
+
+
     {\centering{\section{符号说明}}}
-        \textbf{见上页表一。}
+        \textbf{见下页表2。}
         \begin{table}[htbp]
             \centering
             \caption{符号说明}
@@ -257,8 +292,6 @@
 
                         A则称为成对比较矩阵。
 
-                        \newpage
-
                         \item 归一化 \\
                             对各城市的数据进行归一化处理
                             \begin{table}[h]
@@ -352,7 +385,7 @@
                 \subsubsection{模型的建立}
                     基于第二问所建模型，通过建筑生命周期的三个阶段确定代表性强的指标加入模型评价。我们选取的指标有： \\
                     \textit{建造阶段：建筑材料生产运输的碳排放系数、建造过程所产生的碳排放} \\
-                    \textit{运行阶段：生活使用能耗、气候原因、地区差异、周边产业} \\
+                    \textit{运行阶段：生活使用能耗、气候原因} \\
                     \textit{建造阶段：拆除过程的能耗}
 
                 \subsubsection{模型的验证}
@@ -486,12 +519,67 @@
                     \end{figure}
 
     {\centering{\section{结果检验与误差分析}}}
+        \subsection{问题三结果检验}
+            为了验证模型的有效性，我们将 2021 年江苏省 13 个地级市的居住建
+            筑碳排放作为输入输入到所建立模型中进行综合评价，并将得到的结果排
+            名与实际的排名进行比较，得到以下数据：\\
+            \begin{figure}[h]
+                \centering
+                \includegraphics[height=9cm,width=15cm]{contrast_q3.png}
+                \caption{CONTRAST}
+            \end{figure}
+            \begin{table}[h]
+                \centering
+                \begin{tabular}{c c c} \hline
+                    偏差个数 & 最大偏差 & 平均偏差 \\ \hline
+                    5 & 3 & 0.77 \\ \hline
+                \end{tabular}
+            \end{table}
+            从数据中我们发现评价模型给出的排名大体上是符合实际的，但是针对部分地区排名有较大差别，我们推测是由地区差异或周边产业导致的，而我们并未将其纳入指标范围内。
+
+
+        \subsection{问题四结果检验}
+            我们对模型的给出的拟合值进行了后验差比检验，得到的后验差比值\textit{C}的值为\textit{0.002061237577761378}，远小于0.35，说明我们的模型拟合精度很高。
+            \begin{figure}[h]
+                \centering
+                \includegraphics[height=9cm,width=15cm]{fit_and_his_q4.png}
+                \caption{COMPARISON}
+            \end{figure}
 
 
     {\centering{\section{模型评价}}}
+        \subsection{模型优点}
+            \subsubsection{建筑生命周期碳排放评价模型}
+                使用层次分析法建立模型，定性与定量相结合，
+                将对象视作系统进行了综合决策，能够考虑到诸多个因素的共同作用，
+                有助于对建筑生命周期碳排放评价有更深入的了解。
+
+            \subsubsection{江苏省建筑碳排放全过程短期预测模型}
+                使用灰色预测模型$ GM (1, 1) $，所需数据量少且运算方便，
+                建模精度高，十分适合基于历史数据预测下一步的发展。
+
+
+        \subsection{模型缺点}
+            \subsubsection{建筑生命周期碳排放评价模型}
+                只能从原有的方案中选择，不能产生新的方案。
+
+                模型建立较为粗略，不适用于精度较高的问题。
+
+                判断矩阵的主观性太大，难以使人信服，除非采用公认的专家学者的判断。
+
+            \subsubsection{江苏省建筑碳排放全过程短期预测模型}
+                只能适用于样本较少的短期预测，如果样本过大或需要预测时间过长，都会产生较大误差，使预测目标失效。
 
 
     {\centering{\section{模型推广与改进}}}
+        \subsection{评价模型的改进}
+            \subsubsection{判断矩阵的改进}
+                原先的判断矩阵主观意志较强，不足以令人信服，可查阅更多相关文献，得到权威专家学者的判断来构成判断矩阵。
+
+            \subsubsection{判断指标的优化}
+                原先的判断指标考虑地不够充分，导致模型在部分城市上精度只差强人意，应选取更多具有代表性的指标加入到模型的准则层中。
+
+
         \subsection{预测模型的改进}
             \subsubsection{方程式修正}
                 考虑到原方程中含有$ \frac{\Delta x^{ (1)}}{\Delta t} $，
@@ -505,8 +593,41 @@
 
 
     {\centering{\section{参考文献}}}
-    \newpage
+    [1] \href{https://blog.csdn.net/qq_53133234/article/details/124124031}{胃口很大的一条小蛇仔 ，数学建模之综合评价模型（层次分析法+Topsis法+熵权法），2023-5-9}
 
+    [2] \href{https://blog.csdn.net/baidu/article/details/125050963?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522168403226916782425189461%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=168403226916782425189461&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-2-125050963-null-null.142%5ev87%5einsert_down1,239%5ev2%5einsert_chatgpt&utm_term=%E5%B1%82%E6%AC%A1%E5%88%86%E6%9E%90%E6%B3%95python&spm=1018.2226.3001.4187}{果州做题家 ，【建模算法】层次分析法（Python实现），2023-5-9}
+
+    [3] \href{https://www.bilibili.com/video/BV1Ja41117Af/?spm_id_from=333.337.search-card.all.click&vd_source=f44ef83a1a68e357572cad74e3747665}{数学建模BOOM ，层次分析法—评价类问题（北海数学建模：数模零基础入门 国赛美赛必看），2023-5-10}
+
+    [4] 汪江波，江苏省建筑业低碳发展的治理机制研究；2019(6);29-45.
+
+    [5] 李爽, 陶东, 夏青. 基于扩展 STIRPAT 模型的我国建筑业碳排放影响因素研究[J]. 管理现代化, 2017 (3): 96-98.
+
+    [6] Lu Y, Cui P, Li D. Which activities contribute most to building energy consumption in China? A hybrid LMDI decomposition analysis from year 2007 to 2015[J]. Energy and Buildings, 2018, 165: 259-269.
+
+    [7] Ma M, Cai W. Do commercial building sector-derived carbon emissions decouple from the economic growth in tertiary industry? A case study of four municipalities in China[J]. Science of The Total Environment, 2019, 650: 822-834.
+
+    [8] \href{https://blog.csdn.net/qq_45934521/article/details/118972081}{code\_king1,数学建模——灰色预测模型Python代码,2023-5-12}
+
+    [9] \href{https://blog.csdn.net/qq_39798423/article/details/89283000?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522168403384516800226564459%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=168403384516800226564459&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-2-89283000-null-null.142%5ev87%5einsert_down1,239%5ev2%5einsert_chatgpt&utm_term=%E7%81%B0%E8%89%B2%E9%A2%84%E6%B5%8B%E6%A8%A1%E5%9E%8B&spm=1018.2226.3001.4187}{欧阳罢笔 ，灰色预测模型，2023-5-12}
+
+    [10] 邓聚龙. 灰色预测与灰决策[M]. 武汉:华中科技大学出版社,2002.
+
+    [11] 基于灰色关联度的组合预测模型的性质[J]. 陈华友,赵佳宝,刘春林.东南大学学报(自然科学版),2004(01)
+
+    [12] \href{http://www.zgjssw.gov.cn/fabuting/shengweiwenjian/202202/t20220208_7412170.shtml}{中共江苏省委办公厅,2023-5-13}
+
+    [13] 黄向岚, 张训常, 刘晔. 我国碳交易政策实现环境红利了吗?[J]. 经济评论, 2018 (6): 86-99.
+
+    [14] 单彩杰, 冯大阔. 《建筑业 10 项新技术(2017 版)》绿色施工技术综述[J]. 建筑技术, 2018, (3): 270-275
+
+    [15] 郭广翠. 中国建筑节能政策对降低建筑能耗的影响研究[D]. 北京: 北京交通大学, 2018.
+
+    [16]  欧晓星. 低碳建筑设计评估与优化研究[D]: 南京: 东南大学, 2016.
+
+    [17] 荆克迪. 中国碳交易市场的机制设计与国际比较研究[D]: 天津: 南开大学, 2014
+
+    \newpage
 
     {\centering{\section{附录}}}
         \subsection*{附录A \hspace{2em} 问题一}
