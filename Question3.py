@@ -61,7 +61,7 @@ for i in range(len(finalScores)):
 
 sortedScores = sorted(enumerate(finalScores), key=lambda finalScores:finalScores[1], reverse=True)
 finalRanking = [finalScores[0] + 1 for finalScores in sortedScores]
-realRanking = [1, 2, 3, 6, 4, 5, 10, 8, 11, 12, 9, 7, 13]
+realRanking = [1, 2, 3, 6, 5, 4, 10, 12, 11, 8, 7, 9, 13]
 
 plt.figure(figsize=(20, 12))
 x = range(1, 14)
