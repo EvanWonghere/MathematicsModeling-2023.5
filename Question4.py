@@ -16,8 +16,6 @@ def comparison_test():
     for k in range(2, years):
         test_value = float(Data0[k - 1]) / Data0[k]
         if test_value < left_border or test_value > right_border:
-            print(k, test_value)
-            print(left_border, right_border)
             return False
     return True
 
