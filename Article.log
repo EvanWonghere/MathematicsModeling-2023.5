@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.4.18)  14 MAY 2023 03:47
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.4.18)  14 MAY 2023 03:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -598,35 +598,31 @@ Package: ninecolors 2022-02-13 vv2022D Select colors with proper color contrast
 \c@lstlisting=\count342
  [1
 
-] [2]
+] [2] [3] [4]
 File: 层次分析法框架.png Graphic file (type bmp)
 <层次分析法框架.png>
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[3] [4] [5] [6] [7]
+ [5] [6] [7] [8] [9]
 File: contrast_q3.png Graphic file (type bmp)
 <contrast_q3.png>
 
-Overfull \hbox (36.79065pt too wide) in paragraph at lines 287--288
+Overfull \hbox (36.79065pt too wide) in paragraph at lines 303--304
  [][] 
  []
 
-[8]
-Underfull \hbox (badness 10000) in paragraph at lines 337--340
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 353--356
 
  []
 
-[9] [10]
+[11] [12]
 File: fit_and_his_q4.png Graphic file (type bmp)
 <fit_and_his_q4.png>
 
-Overfull \hbox (36.79065pt too wide) in paragraph at lines 405--406
+Overfull \hbox (36.79065pt too wide) in paragraph at lines 421--422
  [][] 
  []
 
-[11] [12] (c:/texlive/2023/texmf-dist/tex/latex/listings/lstlang1.sty
+[13] [14] (c:/texlive/2023/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2023/02/27 1.9 listings language file
 )
 
@@ -652,7 +648,7 @@ Package fontspec Info: Font family 'FangSong(0)' created for font 'FangSong'
 (fontspec)             <->"FangSong/OT:script=hani;language=dflt;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 
- (./Question1.py [13] [14]) (./Question2.py [15]) (./Question3.py [16] [17]) [18] (./Question4.py [19] [20] [21]) [22] (./Article.aux)
+ (./Question1.py [15] [16]) (./Question2.py [17]) (./Question3.py [18] [19]) [20] (./Question4.py [21] [22] [23]) [24] (./Article.aux)
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
@@ -666,4 +662,4 @@ Here is how much of TeX's memory you used:
  36 hyphenation exceptions out of 8191
  89i,17n,97p,405b,1989s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Article.pdf (22 pages).
+Output written on Article.pdf (24 pages).
